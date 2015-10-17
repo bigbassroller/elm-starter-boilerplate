@@ -1,0 +1,28 @@
+{
+  "name": "bingo",
+  "version": "1.0.0",
+  "description": "npm install -g gulp npm install gulp --save-dev",
+  "main": "bingo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "elm": "^2.0.0",
+    "elm-webpack-loader": "^0.2.0",
+    "glob": "^5.0.15",
+    "gulp": "gulpjs/gulp#4.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-newer": "^0.5.1",
+    "gulp-util": "^3.0.6",
+    "loader-utils": "^0.2.11",
+    "lodash": "^3.10.1",
+    "node-elm-compiler": "^0.4.0",
+    "path": "^0.12.7",
+    "require-dir": "^0.3.0",
+    "simple-spawner": "^1.0.1",
+    "simple-time-log": "^1.0.0",
+    "webpack": "^1.12.2"
+  }
+}
