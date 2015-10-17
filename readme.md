@@ -1,19 +1,11 @@
-npm install -g gulp
-npm install gulp --save-dev
+# Elm Bingo Gulp Boiler Plate
 
 
-
-npm install webpack -g
-
-
-webpack --progress --colors
-
-webpack --progress --colors --watch
-
-npm install webpack-dev-server -
-
-webpack-dev-server --progress --colors
-
-webpack-dev-server --progress --colors
-
-npm i elm-webpack-loader
+Compile single elm file (working)
+```bash
+gulp elm
+```
+Compile multiple elm files using webpack (not working yet)
+```
+gulp webpack
+```
