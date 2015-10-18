@@ -1,3 +1,5 @@
 node_modules/
 public/
+bingo.js
+elm.js
 .DS_Store

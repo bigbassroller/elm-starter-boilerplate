@@ -40,7 +40,7 @@ Elm.Bingo.make = function (_elm) {
    _L.fromArray([]),
    _L.fromArray([A2($Html.a,
    _L.fromArray([$Html$Attributes.href("http://www.space-rocket.com")]),
-   _L.fromArray([$Html.text("Space Rocket | Web & Graphic Design")]))]));
+   _L.fromArray([$Html.text("Yo Space Rocket | Web & Graphic Design")]))]));
    var title = F2(function (message,
    times) {
       return $Html.text($String.trimRight($String.repeat(times)($String.toUpper(A2($Basics._op["++"],
@@ -50,7 +50,7 @@ Elm.Bingo.make = function (_elm) {
    var pageHeader = A2($Html.h1,
    _L.fromArray([]),
    _L.fromArray([A2(title,
-   "Another Page!",
+   "bingo!",
    3)]));
    var view = A2($Html.div,
    _L.fromArray([$Html$Attributes.id("container")]),
