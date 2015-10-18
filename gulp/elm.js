@@ -23,7 +23,7 @@ Gulp.task('elm', function () {
   var args = elmPaths.concat([
     '--yes',
     '--output',
-    'public/bingo.js'
+    'public/pages/bingo.js'
   ])
 
   return SimpleSpawner(elmBins['elm-make'], args)
