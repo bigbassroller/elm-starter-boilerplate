@@ -19,7 +19,7 @@ pageHeader =
 pageFooter =
   footer [ ]
     [ a [href "http://www.space-rocket.com" ] 
-        [ text "Yes Yes Space Rocket | Web & Graphic Design" ] 
+        [ text "Space Rocket | Web & Graphic Design" ] 
     ]
 
 entryItem phrase points = 
