@@ -1,7 +1,6 @@
 var Gulp = require('gulp');
 var Gutil = require('gulp-util');
 var Webpack = require('webpack');
-var fs = require('fs');
 
 
 var executionCount = 0;
@@ -49,6 +48,4 @@ Gulp.task('webpack', function (callback) {
         executionCount += 1;
     });
 
-    fs.createReadStream('./node_modules/elm-webpack-loader/index.js!/Applications/MAMP/htdocs/Elm/bingo/client/pages/another-page/another-page.elm').pipe(fs.createWriteStream('./public/pages/another-page.js'));
-    fs.createReadStream('./node_modules/elm-webpack-loader/index.js!/Applications/MAMP/htdocs/Elm/bingo/client/pages/bingo/bingo.elm').pipe(fs.createWriteStream('./public/pages/bingo.js'));
 });
