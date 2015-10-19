@@ -19,11 +19,11 @@ Gulp.task('elm', function () {
   //     outputName: 'another-page.min.js'
   // }];
 
-  var elmPaths = Glob.sync('./client/*/*.elm')
+  var elmPaths = Glob.sync('./client/*/*/*.elm')
   var args = elmPaths.concat([
     '--yes',
     '--output',
-    'public/pages/bingo.js'
+    'public/pages/bingo/bingo.js'
   ])
 
   return SimpleSpawner(ElmBins['elm-make'], args)
