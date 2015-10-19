@@ -16,12 +16,12 @@ Gulp.task('sass', function () {
         outputName: 'core.min.css'
     }, {
         entries: './client/pages/bingo/index.scss',
-        dest: './public/pages',
-        outputName: 'bingo.min.css'
+        dest: './public/pages/bingo',
+        outputName: 'style.min.css'
     }, {
         entries: './client/pages/home/index.scss',
-        dest: './public/pages',
-        outputName: 'home.min.css'
+        dest: './public/pages/home',
+        outputName: 'style.min.css'
     }];
 
     return bundleConfigs.map(function (bundleConfig) {
