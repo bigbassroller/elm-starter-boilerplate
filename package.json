@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "async": "^1.4.2",
+    "bootstrap-sass": "^3.3.5",
     "del": "^2.0.2",
     "elm": "^2.0.0",
     "elm-webpack-loader": "^0.2.0",
