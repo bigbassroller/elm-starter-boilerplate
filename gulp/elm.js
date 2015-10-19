@@ -1,7 +1,7 @@
 var Path = require('path');
 var Gulp = require('gulp');
-var elmBins = require('elm');
-var glob = require('glob');
+var ElmBins = require('elm');
+var Glob = require('glob');
 var SimpleSpawner = require('simple-spawner');
 var Concat = require('gulp-concat');
 var Newer = require('gulp-newer');
@@ -19,13 +19,13 @@ Gulp.task('elm', function () {
   //     outputName: 'another-page.min.js'
   // }];
 
-  var elmPaths = glob.sync('./*.elm')
+  var elmPaths = Glob.sync('./*.elm')
   var args = elmPaths.concat([
     '--yes',
     '--output',
     'public/pages/bingo.js'
   ])
 
-  return SimpleSpawner(elmBins['elm-make'], args)
+  return SimpleSpawner(ElmBins['elm-make'], args)
 
 });
