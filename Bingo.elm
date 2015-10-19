@@ -13,7 +13,7 @@ title message times =
 
 
 pageHeader =
-  h1 [ ] [ title "bingos!" 3 ]
+  h1 [ ] [ title "bingo!" 3 ]
 
 pageFooter =
   footer [ ]
