@@ -159,7 +159,7 @@ ul {
 li {
   background: #61a1bc;
   background: #fff;
-  height: 25px;
+  height: auto;
   position: relative;
   padding: 15px 30px;
   margin-bottom: 8px;
@@ -180,15 +180,12 @@ li.total {
 }
 
 li .phrase {
-  position: absolute;
-  top: 18px;
-  left: 80px;
+    position: relative;
 }
 
 li .points {
-  position: absolute;
-  top: 18px;
-  right: 80px;
+    float: right;
+    position: relative;
 }
 
 li .label {
