@@ -9,5 +9,6 @@ Gulp.task('watch', function () {
     Gulp.watch('./client/*/*.elm', ['elm']);
     Gulp.watch('./client/*/*/*.elm', ['elm']);
     Gulp.watch('./client/*.scss', ['sass']);
-    Gulp.watch('./client/**/*.scss', ['sass']);
+    Gulp.watch('./client/*/*.scss', ['sass']);
+    Gulp.watch('./client/*/*/*.scss', ['sass']);
 });
