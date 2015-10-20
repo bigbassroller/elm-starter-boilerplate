@@ -9,7 +9,7 @@ Gulp.task('media', function () {
         .pipe(Gulp.dest(Path.join('./public', 'media')));
 
     var fonts = Gulp.src('./node_modules/font-awesome/fonts/**')
-        .pipe(Gulp.dest(Path.join('./public', 'fonts')));
+        .pipe(Gulp.dest(Path.join('./public', 'media', 'font-awesome', 'fonts')));
 
     return Merge(general, fonts);
 });
