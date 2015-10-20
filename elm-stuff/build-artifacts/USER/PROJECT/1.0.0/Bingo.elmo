@@ -50,7 +50,7 @@ Elm.Bingo.make = function (_elm) {
    var pageHeader = A2($Html.h1,
    _L.fromArray([]),
    _L.fromArray([A2(title,
-   "home",
+   "bingo!",
    3)]));
    var view = A2($Html.div,
    _L.fromArray([$Html$Attributes.id("container")]),
