@@ -28,7 +28,6 @@ Gulp.task('sass', function () {
         return Gulp.src(bundleConfig.entries)
             .pipe(Newer(Path.join(bundleConfig.dest, bundleConfig.outputName)))
             .pipe(Concat(bundleConfig.outputName))
-            // .pipe(Sass({ compress: true }))
             .pipe(Sass({outputStyle: 'compressed'}))
             .pipe(Gulp.dest(bundleConfig.dest));
     });
