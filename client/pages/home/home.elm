@@ -14,7 +14,7 @@ title message times =
 
 
 pageHeader =
-  h1 [ ] [ title "Another-page" 3 ]
+  h1 [ ] [ title "home" 3 ]
 
 pageFooter =
   footer [ ]

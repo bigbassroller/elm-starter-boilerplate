@@ -1,31 +1,32 @@
 var Path = require('path');
 var Gulp = require('gulp');
-var ElmBins = require('elm');
-var Glob = require('glob');
-var SimpleSpawner = require('simple-spawner');
+var Elm  = require('gulp-elm');
 var Concat = require('gulp-concat');
 var Newer = require('gulp-newer');
 
 
-Gulp.task('elm', function () {
+Gulp.task('elm-init', Elm.init);
 
-  // var bundleConfigs = [{
-  //     entries: './client/pages/bingo/index.elm',
-  //     dest: './public/pages',
-  //     outputName: 'bingo.min.js'
-  // }, {
-  //     entries: './client/pages/another-page/index.elm',
-  //     dest: './public/pages',
-  //     outputName: 'another-page.min.js'
-  // }];
+Gulp.task('elm', ['elm-init'], function () {
 
-  var elmPaths = Glob.sync('./client/*/*/*.elm')
-  var args = elmPaths.concat([
-    '--yes',
-    '--output',
-    'public/pages/bingo/bingo.js'
-  ])
+  var bundleConfigs = [{
+      entries: './client/pages/bingo/bingo.elm',
+      dest: './public/pages',
+      outputName: 'bingo.js'
+  }, {
+      entries: './client/pages/home/home.elm',
+      dest: './public/pages',
+      outputName: 'home.js'
+  }];
 
-  return SimpleSpawner(ElmBins['elm-make'], args)
+  return bundleConfigs.map(function (bundleConfig) {
+
+      return Gulp.src(bundleConfig.entries)
+          .pipe(Newer(Path.join(bundleConfig.dest, bundleConfig.outputName)))
+          .pipe(Concat(bundleConfig.outputName))
+          .pipe(Elm())
+          .pipe(Gulp.dest(bundleConfig.dest));
+  });
+
 
 });
