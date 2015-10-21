@@ -59,18 +59,19 @@ footer a {
 }
 
 button.sort {
-  border: 0;
-  height: 40px;
-  padding: 5px 15px;
-  font-size: 14px;
-  font-weight: bold;
-  letter-spacing: .15em;
-  text-transform: uppercase;
+  background: #d9d9d9 none repeat scroll 0 0;
+  border: 0 none;
   border-radius: 4px;
   color: #5e6163;
-  background: #D9D9D9;
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  height: 40px;
+  letter-spacing: 0.15em;
+  margin: 0 auto;
+  padding: 5px 15px;
   position: relative;
-  left: 210px;
+  text-transform: uppercase;
 }
 
 button.sort:hover {
@@ -153,6 +154,7 @@ ul {
   list-style: none;
   font-size: 1.5em;
   font-weight: bold;
+  position: relative;
   text-align: left;
 }
 
@@ -174,9 +176,26 @@ li:hover {
 }
 
 li.total {
-  background: none;
-  box-shadow: none;
-  color: #61a1bc;
+    background: transparent none repeat scroll 0 0;
+    box-shadow: none;
+    color: #61a1bc;
+    display: table;
+    position: relative;
+    width: 100%;
+}
+
+li.total .label {
+    border-radius: 0;
+    color: #61a1bc;
+    display: block;
+    font-size: 100%;
+    font-weight: bold;
+    line-height: unset;
+    padding: 0.2em 0.6em 0.3em;
+    text-align: right;
+    vertical-align: baseline;
+    white-space: nowrap;
+    width: auto;
 }
 
 li .phrase {
@@ -185,13 +204,12 @@ li .phrase {
 
 li .points {
     float: right;
+    margin-right: 10px;
     position: relative;
 }
 
 li .label {
-  position: absolute;
-  top: 18px;
-  left: 300px;
+    position: relative;
 }
 
 li.highlight {

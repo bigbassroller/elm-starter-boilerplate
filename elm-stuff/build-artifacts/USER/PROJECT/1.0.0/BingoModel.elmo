@@ -1,0 +1,72 @@
+Elm.BingoModel = Elm.BingoModel || {};
+Elm.BingoModel.make = function (_elm) {
+   "use strict";
+   _elm.BingoModel = _elm.BingoModel || {};
+   if (_elm.BingoModel.values)
+   return _elm.BingoModel.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   $moduleName = "BingoModel",
+   $Basics = Elm.Basics.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
+   var newEntry = F3(function (phrase,
+   points,
+   id) {
+      return {_: {}
+             ,id: id
+             ,phrase: phrase
+             ,points: points
+             ,wasSpoken: false};
+   });
+   var initialModel = {_: {}
+                      ,entries: _L.fromArray([A3(newEntry,
+                                             "Doing Agile",
+                                             200,
+                                             2)
+                                             ,A3(newEntry,
+                                             "In the Cloud",
+                                             300,
+                                             3)
+                                             ,A3(newEntry,
+                                             "Future-Proof",
+                                             100,
+                                             1)
+                                             ,A3(newEntry,
+                                             "Rock Star Ninja",
+                                             400,
+                                             4)])
+                      ,nextID: 5
+                      ,phraseInput: ""
+                      ,pointsInput: ""};
+   var Model = F4(function (a,
+   b,
+   c,
+   d) {
+      return {_: {}
+             ,entries: a
+             ,nextID: d
+             ,phraseInput: b
+             ,pointsInput: c};
+   });
+   var Entry = F4(function (a,
+   b,
+   c,
+   d) {
+      return {_: {}
+             ,id: d
+             ,phrase: a
+             ,points: b
+             ,wasSpoken: c};
+   });
+   _elm.BingoModel.values = {_op: _op
+                            ,Entry: Entry
+                            ,Model: Model
+                            ,newEntry: newEntry
+                            ,initialModel: initialModel};
+   return _elm.BingoModel.values;
+};
