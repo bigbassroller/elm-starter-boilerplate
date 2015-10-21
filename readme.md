@@ -1,11 +1,14 @@
 # Elm Bingo Gulp Boiler Plate
 
-
-Compile single elm file (working)
+1. Install packages:
 ```bash
-gulp elm
+npm install
 ```
-Compile multiple elm files using webpack (not working yet)
+
+2. Compile and watch elm and sass
+```bash
+gulp
 ```
-gulp webpack
-```
+3. Profit?
+
+PS Work in progress.
