@@ -10,6 +10,7 @@ Elm.Bingo.make = function (_elm) {
    _L = _N.List.make(_elm),
    $moduleName = "Bingo",
    $Basics = Elm.Basics.make(_elm),
+   $BingoModel = Elm.BingoModel.make(_elm),
    $BingoUtils = Elm.BingoUtils.make(_elm),
    $Html = Elm.Html.make(_elm),
    $Html$Attributes = Elm.Html.Attributes.make(_elm),
@@ -60,6 +61,78 @@ Elm.Bingo.make = function (_elm) {
    _L.fromArray([A2(title,
    "bingo!",
    3)]));
+   var update = F2(function (action,
+   model) {
+      return function () {
+         switch (action.ctor)
+         {case "Add":
+            return function () {
+                 var isInvalid = function (model) {
+                    return $String.isEmpty(model.phraseInput) || $String.isEmpty(model.pointsInput);
+                 };
+                 var entryToAdd = A3($BingoModel.newEntry,
+                 model.phraseInput,
+                 $BingoUtils.parseInt(model.pointsInput),
+                 model.nextID);
+                 return isInvalid(model) ? model : _U.replace([["phraseInput"
+                                                               ,""]
+                                                              ,["pointsInput"
+                                                               ,""]
+                                                              ,["entries"
+                                                               ,A2($List._op["::"],
+                                                               entryToAdd,
+                                                               model.entries)]
+                                                              ,["nextID"
+                                                               ,model.nextID + 1]],
+                 model);
+              }();
+            case "Delete":
+            return function () {
+                 var remainingEntries = A2($List.filter,
+                 function (e) {
+                    return !_U.eq(e.id,
+                    action._0);
+                 },
+                 model.entries);
+                 return _U.replace([["entries"
+                                    ,remainingEntries]],
+                 model);
+              }();
+            case "Mark":
+            return function () {
+                 var updateEntry = function (e) {
+                    return _U.eq(e.id,
+                    action._0) ? _U.replace([["wasSpoken"
+                                             ,$Basics.not(e.wasSpoken)]],
+                    e) : e;
+                 };
+                 return _U.replace([["entries"
+                                    ,A2($List.map,
+                                    updateEntry,
+                                    model.entries)]],
+                 model);
+              }();
+            case "NoOp": return model;
+            case "Sort":
+            return _U.replace([["entries"
+                               ,A2($List.sortBy,
+                               function (_) {
+                                  return _.points;
+                               },
+                               model.entries)]],
+              model);
+            case "UpdatePhraseInput":
+            return _U.replace([["phraseInput"
+                               ,action._0]],
+              model);
+            case "UpdatePointsInput":
+            return _U.replace([["pointsInput"
+                               ,action._0]],
+              model);}
+         _U.badCase($moduleName,
+         "between lines 25 and 70");
+      }();
+   });
    var Add = {ctor: "Add"};
    var UpdatePointsInput = function (a) {
       return {ctor: "UpdatePointsInput"
@@ -170,137 +243,12 @@ Elm.Bingo.make = function (_elm) {
                    _L.fromArray([$Html.text("Sort")]))
                    ,pageFooter]));
    });
-   var NoOp = {ctor: "NoOp"};
-   var newEntry = F3(function (phrase,
-   points,
-   id) {
-      return {_: {}
-             ,id: id
-             ,phrase: phrase
-             ,points: points
-             ,wasSpoken: false};
-   });
-   var initialModel = {_: {}
-                      ,entries: _L.fromArray([A3(newEntry,
-                                             "Doing Agile",
-                                             200,
-                                             2)
-                                             ,A3(newEntry,
-                                             "In the Cloud",
-                                             300,
-                                             3)
-                                             ,A3(newEntry,
-                                             "Future-Proof",
-                                             100,
-                                             1)
-                                             ,A3(newEntry,
-                                             "Rock Star Ninja",
-                                             400,
-                                             4)])
-                      ,nextID: 5
-                      ,phraseInput: ""
-                      ,pointsInput: ""};
-   var update = F2(function (action,
-   model) {
-      return function () {
-         switch (action.ctor)
-         {case "Add":
-            return function () {
-                 var isInvalid = function (model) {
-                    return $String.isEmpty(model.phraseInput) || $String.isEmpty(model.pointsInput);
-                 };
-                 var entryToAdd = A3(newEntry,
-                 model.phraseInput,
-                 $BingoUtils.parseInt(model.pointsInput),
-                 model.nextID);
-                 return isInvalid(model) ? model : _U.replace([["phraseInput"
-                                                               ,""]
-                                                              ,["pointsInput"
-                                                               ,""]
-                                                              ,["entries"
-                                                               ,A2($List._op["::"],
-                                                               entryToAdd,
-                                                               model.entries)]
-                                                              ,["nextID"
-                                                               ,model.nextID + 1]],
-                 model);
-              }();
-            case "Delete":
-            return function () {
-                 var remainingEntries = A2($List.filter,
-                 function (e) {
-                    return !_U.eq(e.id,
-                    action._0);
-                 },
-                 model.entries);
-                 return _U.replace([["entries"
-                                    ,remainingEntries]],
-                 model);
-              }();
-            case "Mark":
-            return function () {
-                 var updateEntry = function (e) {
-                    return _U.eq(e.id,
-                    action._0) ? _U.replace([["wasSpoken"
-                                             ,$Basics.not(e.wasSpoken)]],
-                    e) : e;
-                 };
-                 return _U.replace([["entries"
-                                    ,A2($List.map,
-                                    updateEntry,
-                                    model.entries)]],
-                 model);
-              }();
-            case "NoOp": return model;
-            case "Sort":
-            return _U.replace([["entries"
-                               ,A2($List.sortBy,
-                               function (_) {
-                                  return _.points;
-                               },
-                               model.entries)]],
-              model);
-            case "UpdatePhraseInput":
-            return _U.replace([["phraseInput"
-                               ,action._0]],
-              model);
-            case "UpdatePointsInput":
-            return _U.replace([["pointsInput"
-                               ,action._0]],
-              model);}
-         _U.badCase($moduleName,
-         "between lines 59 and 104");
-      }();
-   });
    var main = $StartApp$Simple.start({_: {}
-                                     ,model: initialModel
+                                     ,model: $BingoModel.initialModel
                                      ,update: update
                                      ,view: view});
-   var Model = F4(function (a,
-   b,
-   c,
-   d) {
-      return {_: {}
-             ,entries: a
-             ,nextID: d
-             ,phraseInput: b
-             ,pointsInput: c};
-   });
-   var Entry = F4(function (a,
-   b,
-   c,
-   d) {
-      return {_: {}
-             ,id: d
-             ,phrase: a
-             ,points: b
-             ,wasSpoken: c};
-   });
+   var NoOp = {ctor: "NoOp"};
    _elm.Bingo.values = {_op: _op
-                       ,Entry: Entry
-                       ,Model: Model
-                       ,newEntry: newEntry
-                       ,initialModel: initialModel
                        ,NoOp: NoOp
                        ,Sort: Sort
                        ,Delete: Delete

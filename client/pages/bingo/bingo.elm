@@ -6,43 +6,9 @@ import String exposing (toUpper, repeat, trimRight)
 import StartApp.Simple as StartApp
 import Signal exposing (Address)
 import BingoUtils as Utils
+import BingoModel
 --import Debug
 
--- MODEL
-
-type alias Entry = { 
-    phrase: String, 
-    points: Int,
-    wasSpoken: Bool,
-    id: Int
-  }
-type alias Model = {
-    entries: List Entry,
-    phraseInput: String,
-    pointsInput: String,
-    nextID: Int
-  }
-
-newEntry : String -> Int -> Int -> Entry
-newEntry phrase points id = { 
-    phrase = phrase,
-    points = points,
-    wasSpoken = False,
-    id = id
-  }
-
-initialModel : Model
-initialModel = {
-  entries = [ 
-      newEntry "Doing Agile" 200 2,
-      newEntry "In the Cloud" 300 3,
-      newEntry "Future-Proof" 100 1,
-      newEntry "Rock Star Ninja" 400 4
-    ],
-    phraseInput = "",
-    pointsInput = "",
-    nextID = 5
-  }
 
 -- UPDATE
 
@@ -54,7 +20,7 @@ type Action = NoOp
             | UpdatePointsInput String
             | Add
 
-update : Action -> Model -> Model
+update : Action -> BingoModel.Model -> BingoModel.Model
 update action model =
   case action of
     NoOp -> model
@@ -88,7 +54,7 @@ update action model =
     Add ->
       let
         entryToAdd =
-          newEntry model.phraseInput (Utils.parseInt model.pointsInput) model.nextID
+           BingoModel.newEntry model.phraseInput (Utils.parseInt model.pointsInput) model.nextID
         
         isInvalid model = 
           String.isEmpty model.phraseInput || String.isEmpty model.pointsInput
@@ -124,7 +90,7 @@ pageFooter =
         [ text "Space Rocket | Web & Graphic Design" ] 
     ]
 
-entryItem : Address Action -> Entry -> Html
+entryItem : Address Action -> BingoModel.Entry -> Html
 entryItem address entry = 
   li [ 
     classList [ ("highlight", entry.wasSpoken)],
@@ -138,7 +104,7 @@ entryItem address entry =
         [ ]
     ]
 
-totalPoints : List Entry -> Int
+totalPoints : List BingoModel.Entry -> Int
 totalPoints entries =
   let
     spokenEntries = List.filter .wasSpoken entries
@@ -154,7 +120,7 @@ totalItem total =
         span [ class "points" ] [ text (toString total) ]
       ]
 
-entryList : Address Action -> List Entry -> Html
+entryList : Address Action -> List BingoModel.Entry -> Html
 entryList address entries =
   let
     entryItems = List.map (entryItem address) entries
@@ -162,7 +128,7 @@ entryList address entries =
   in
     ul [ ] items
 
-entryForm : Address Action -> Model -> Html
+entryForm : Address Action -> BingoModel.Model -> Html
 entryForm address model =
   div [ ][
     input [
@@ -192,7 +158,7 @@ entryForm address model =
 
 
 
-view : Address Action -> Model -> Html
+view : Address Action -> BingoModel.Model -> Html
 view address model =
   div [ 
     id "container" 
@@ -214,7 +180,7 @@ view address model =
 main : Signal Html
 main = 
   StartApp.start {
-    model = initialModel,
+    model = BingoModel.initialModel,
     view = view,
     update = update
   }
