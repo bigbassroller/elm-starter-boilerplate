@@ -10,7 +10,8 @@ Gulp.task('sass', function () {
         entries: [
             './client/core/variables.scss',
             './client/core/bootstrap.scss',
-            './client/core/font-awesome.scss'
+            './client/core/font-awesome.scss',
+            './client/core/custom.scss'
         ],
         dest: './public',
         outputName: 'core.min.css'
