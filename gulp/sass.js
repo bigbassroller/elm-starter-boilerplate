@@ -8,6 +8,7 @@ Gulp.task('sass', function () {
 
     var bundleConfigs = [{
         entries: [
+            './client/core/variables.scss',
             './client/core/bootstrap.scss',
             './client/core/font-awesome.scss'
         ],
